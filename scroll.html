@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <title>Document</title>
+
+    <style>
+
+/* 表示時の状態 */
+.fade-enter-from {
+  opacity: 0;
+}
+/* 表示時のアクティブ状態 */
+.fade-enter-active {
+  transition: all .5s;
+}
+/* 表示時の終了状態 */
+.fade-enter-to {
+  opacity: 1;
+}
+/* 非表示時の状態 */
+.fade-leave-from {
+  opacity: 1;
+}
+/* 非表示時のアクティブ状態 */
+.fade-leave-active {
+  transition: all .5s;
+}
+/* 非表示時の終了状態 */
+.fade-leave-to {
+  opacity: 0;
+}
+
+    </style>
+
+</head>
+<body>
+
+    <div id="scroll">Scroll: {{ scroll }} </div>
+
+    <div id="sh"> 
+
+        <div v-if="show == true">
+            <transition name="fade">
+            <img src="./img/logo.jpg" style="width:50%; height:auto;">
+            </transition>
+        </div>
+
+        <div v-else>空</div>
+
+    </div>
+
+    <div style="width:500px; height:1800px;">
+
+     </div>   
+
+<script>
+
+// ================ スクロール　位置を取得 
+const Scroll = {
+    data() {
+        return {
+            scroll:0
+                }
+            },
+            // DOMにマウントされた後に実行する処理 mounted
+            mounted() {
+                window.addEventListener("scroll", this.getScroll)
+            },
+            methods: {
+                getScroll() {
+                this.scroll = window.scrollY;
+                  
+                },
+
+           }
+}
+        Vue.createApp(Scroll).mount('#scroll')
+
+        // ================ ２秒後に表示 
+          const Sh = {
+                data() {
+                    return {
+                        show: true
+                    }
+                },
+
+                mounted() {
+                    this.showF()
+               },
+
+                methods: {
+                    showF() {
+                    
+                          setTimeout(() => {
+                            this.show = false
+                        }, 2000)
+                    },
+                }
+            }
+
+            Vue.createApp(Sh).mount("#sh")
+
+
+</script>
+    
+</body>
+</html>

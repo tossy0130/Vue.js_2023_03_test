@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .first-enter-active,
+        .first-leave-active {
+            transition: opacity 0s;
+        }
+    
+        .first-enter,
+        .first-leave-to {
+           transition: opacity 2s;
+        }
+    </style>
+
+</head>
+
+
+<div id="app">
+    <div class="parent">
+        <!--  appear => 初期状態で表示
+        <transition name="first" appear>
+            --->
+        <transition name="first">
+            <div v-show="isActive">フェードイン</div>
+        </transition>
+    </div>
+
+
+    <div style="width:100%;height:3000px;">
+        aaa
+    </div>
+  
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    isActive: false,
+                    scroll:0
+                };
+            },
+            created() {
+                window.addEventListener("scroll", this.get_scroll);
+            },
+            methods: {
+                get_scroll() {
+                    this.scroll = window.scrollY;
+                 
+                    if(this.scroll > 500) {
+                        isActive = true;
+                    } else if(this.scroll < 500) {
+                        isActive = false;
+                    }
+                }
+            }
+        })
+
+    </script>
+
+
+    
+    
+</body>
+</html>

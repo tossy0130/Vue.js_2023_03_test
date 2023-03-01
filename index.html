@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <head>
+        <script src="https://unpkg.com/vue@3"></script>
+
+        
+    </head>
+    
+    <!-- aタグ　URL を動的に変更 -->
+    <body>
+        <div id="app">
+            <p><a v-bind:href="url">リンク</a></p>
+            <p><a v-bind:href="url_02">リンク２</a>
+            
+            <p><a v-bind:href="url_03">リンク スクロール取得</a></p>
+            <p><a v-bind:href="url_04">アニメーション 01</a></p>
+
+        </div>
+        <script>
+            const app = {
+                data() {
+                    return {
+                        url: 'https://xs810378.xsrv.jp/site_demo04/index.php',
+                        url_02: 'https://www.linkedin.com/feed/',
+                        url_03: './scroll.html',
+                        url_04: './animation.html'
+
+                    }
+                }
+            }
+            Vue.createApp(app).mount('#app');
+        </script>
+
+        <script src="./js/01.js"></script>
+    </body>
+    
+</body>
+</html>
